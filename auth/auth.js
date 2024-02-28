@@ -4,6 +4,7 @@ const prisma = new PrismaClient();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
+/* POST - /auth/register */
 router.post("/register", async (req, res, next) => {
   const saltRounds = 10;
   const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
@@ -25,6 +26,7 @@ router.post("/register", async (req, res, next) => {
   }
 });
 
+/* POST - /auth/login */
 router.post("/login", async (req, res, next) => {
   try {
     const user = await prisma.users.findFirst({
