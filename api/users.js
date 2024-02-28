@@ -3,6 +3,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 const bcrypt = require("bcrypt");
 
+/* GET - /api/users */
 router.get("/", async (req, res, next) => {
   try {
     const users = await prisma.users.findMany();
@@ -12,6 +13,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+/* GET - /api/users/:id */
 router.get("/:id", async (req, res, next) => {
   try {
     const user = await prisma.users.findUnique({
@@ -28,7 +30,8 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.put("/users/:id", async (req, res, next) => {
+/* PUT - /api/users/:id */
+router.put("/:id", async (req, res, next) => {
   const saltRounds = 10;
   const hashPassword = await bcrypt.hash(req.body.password, saltRounds);
   try {
@@ -51,7 +54,8 @@ router.put("/users/:id", async (req, res, next) => {
   }
 });
 
-router.delete("/users/:id", async (req, res, next) => {
+/* DELETE - /api/users/:id */
+router.delete("/:id", async (req, res, next) => {
   try {
     const userId = parseInt(req.params.id);
     const deletedUser = await prisma.users.delete({

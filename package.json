@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon main.js",
     "test": "jest",
     "seed": "node prisma/seed.js"
   },
