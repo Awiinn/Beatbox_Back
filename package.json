@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "npm-run-all --parallel start frontend",
-  "start": "node index.js",
-  "frontend": "cd ../Beatbox_Front && npm run dev",
+    "start": "node index.js",
+    "frontend": "cd ../Beatbox_Front && npm run dev",
     "test": "jest",
     "server": "node index.js",
     "seed": "node prisma/seed.js"
